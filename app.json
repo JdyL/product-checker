@@ -3,9 +3,12 @@
     "name": "product-checker",
     "slug": "product-checker",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   },
-  "name": "product-checker"
+  "name": "product-checker",
+  "android": {
+    "package": "io.jdyl.productchecker",
+    "versionCode": 1,
+    "googleServicesFile": "./google-services.json"
+  }
 }
