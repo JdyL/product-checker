@@ -1,5 +1,6 @@
-import { Expo } from "expo-server-sdk";
+const { Expo } = require("expo-server-sdk");
 
+pushNotification = () => {
 // Create a new Expo SDK client
 // optionally providing an access token if you have enabled push security
 let expo = new Expo({ accessToken: process.env.EXPO_ACCESS_TOKEN });
@@ -106,3 +107,6 @@ let receiptIdChunks = expo.chunkPushNotificationReceiptIds(receiptIds);
     }
   }
 })();
+};
+
+module.exports = { pushNotification };
