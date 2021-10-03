@@ -52,3 +52,5 @@ buck-out/
 # Expo
 .expo/
 web-build/
+nodejs/environment.js
+react-native/google-services.json
