@@ -7,10 +7,14 @@ const types = {
   rest: "rest",
 };
 
+const sendNotification = (value) => {
+  pushModule.pushNotification(value);
+};
+
 // Product url
 const data = [
   {
-    name: "Amazon",
+    name: "Amazon PS5",
     url: "https://www.amazon.com.au/PlayStation-5-Console/dp/B08HHV8945/",
     unavailableKeyword: "Currently unavailable.",
     element: "#availability",
@@ -31,6 +35,7 @@ const webScrape = ({ html, value }) => {
   const text = $(value.element, html).text().trim();
   if (text.includes(value.unavailableKeyword))
     return console.log(`${value.name}: UNAVAILABLE!`);
+  sendNotification(value);
   return console.log(`${value.name}: AVAILABLE!`);
 };
 
@@ -47,5 +52,4 @@ data.forEach(async (value) => {
     .catch(function (err) {
       return console.log("Error:", err);
     });
-  pushModule.pushNotification();
 });

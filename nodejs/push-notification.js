@@ -1,7 +1,12 @@
 const { Expo } = require("expo-server-sdk");
 const { ENVIRONMENT } = require("./environment");
 
-pushNotification = () => {
+const constructMessage = (data) => {
+  const { name, url } = data || {};
+  return `${name} is now AVAILABLE! Go to ${url} and check it out!`;
+};
+
+pushNotification = (data) => {
   const somePushTokens = [ENVIRONMENT.PUSH_TOKEN];
 
   // Create a new Expo SDK client
@@ -27,7 +32,7 @@ pushNotification = () => {
     messages.push({
       to: pushToken,
       sound: "default",
-      body: "This is a test notification",
+      body: constructMessage(data),
       data: { withSome: "data" },
     });
   }
