@@ -1,12 +1,13 @@
-const { Expo } = require("expo-server-sdk");
-const { ENVIRONMENT } = require("./environment");
+import pkg from "expo-server-sdk";
+const { Expo } = pkg;
+import { ENVIRONMENT } from "./environment.js";
 
 const constructMessage = (data) => {
   const { name, url } = data || {};
   return `${name} is now AVAILABLE! Go to ${url} and check it out!`;
 };
 
-pushNotification = (data) => {
+export const pushNotification = (data) => {
   const somePushTokens = [ENVIRONMENT.PUSH_TOKEN];
 
   // Create a new Expo SDK client
@@ -120,5 +121,3 @@ pushNotification = (data) => {
     }
   })();
 };
-
-module.exports = { pushNotification };
