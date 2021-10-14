@@ -1,11 +1,19 @@
 import cheerio from "cheerio";
 import { TYPES } from "./constants.js";
+import UserAgent from 'user-agents';
 
 const checkKeyword = ({ html, keyword, element, doesNotExist }) => {
   const $ = cheerio.load(html);
   const text = $(element, html).text().trim();
   return doesNotExist ? !text.includes(keyword) : text.includes(keyword);
 };
+
+const getUserAgent = (regex) => {
+  const userAgent = new UserAgent(regex);
+  return userAgent.toString();
+}
+
+const defaultUserAgent = {deviceCategory: 'desktop'};
 
 export const data = [
   {
@@ -17,6 +25,7 @@ export const data = [
       return checkKeyword({ html, keyword, element });
     },
     type: TYPES.WEBSCRAPER,
+    userAgent: () => getUserAgent(defaultUserAgent)
   },
   {
     name: "Target PS5",
@@ -29,17 +38,19 @@ export const data = [
       return checkKeyword({ html, keyword, element });
     },
     type: TYPES.WEBSCRAPER,
+    userAgent: () => getUserAgent(defaultUserAgent)
   },
   {
     name: "BigW PS5",
     origin: "https://www.bigw.com.au/",
     url: "https://www.bigw.com.au/product/playstation-5-console/p/124625/",
     inStock: (html) => {
-      const keyword = "Add to cart";
-      const element = "button.Button.variant-primary.size-normal";
-      return checkKeyword({ html, keyword, element, doesNotExist: true });
+      const keyword = "Coming Soon";
+      const element = "div.ProductLabel";
+      return checkKeyword({ html, keyword, element });
     },
     type: TYPES.WEBSCRAPER,
+    userAgent: () => getUserAgent(defaultUserAgent)
   },
   // {
   //   name: "Amazon Test DualSense",
