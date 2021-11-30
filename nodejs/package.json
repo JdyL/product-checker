@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
-    "expo-server-sdk": "^3.6.0",
     "open": "^8.3.0",
     "puppeteer": "^10.4.0",
     "request": "^2.88.2",

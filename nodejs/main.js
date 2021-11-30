@@ -1,14 +1,13 @@
-import { pushNotification } from "./push-notification.js";
 import rp from "request-promise";
 import { data } from "./data.js";
 import { TYPES } from "./constants.js";
-import open from 'open';
+import open from "open";
 
 let found = false;
 
-const sendNotification = (value) => {
-  pushNotification(value);
-};
+// const sendNotification = (value) => {
+//   pushNotification(value);
+// };
 
 const webScrape = async ({ html, value }) => {
   if (value.inStock(html)) return console.log(`${value.name}: UNAVAILABLE!`);
@@ -24,11 +23,13 @@ const main = {
 };
 
 const withOptions = (url, origin, userAgent) => {
-  console.log("Trying with UserAgent:", userAgent);
+  // console.log("Trying with UserAgent:", userAgent);
   return {
     url,
     headers: {
-      "User-Agent": userAgent || "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0",
+      "User-Agent":
+        userAgent ||
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0",
       Accept:
         "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
       "Accept-Language": "en-US,en;q=0.5",

@@ -2,6 +2,11 @@ import pkg from "expo-server-sdk";
 const { Expo } = pkg;
 import { ENVIRONMENT } from "./environment.js";
 
+/* 
+  Initially developed this for push notifications for mobile (React Native Expo)
+  Unfortunately, push notification is too slow when phone is locked so won't be using this file
+  in the project but keeping a copy in case.
+*/
 const constructMessage = (data) => {
   const { name, url } = data || {};
   return `${name} is now AVAILABLE! Go to ${url} and check it out!`;
@@ -52,7 +57,6 @@ export const pushNotification = (data) => {
     for (let chunk of chunks) {
       try {
         let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-        console.log(ticketChunk);
         tickets.push(...ticketChunk);
         // NOTE: If a ticket contains an error code in ticket.details.error, you
         // must handle it appropriately. The error codes are listed in the Expo
@@ -95,7 +99,6 @@ export const pushNotification = (data) => {
     for (let chunk of receiptIdChunks) {
       try {
         let receipts = await expo.getPushNotificationReceiptsAsync(chunk);
-        console.log(receipts);
 
         // The receipts specify whether Apple or Google successfully received the
         // notification and information about an error, if one occurred.
