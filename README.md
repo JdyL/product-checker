@@ -1,4 +1,4 @@
-# PS5 Checker
+# product-checker (PS5)
 
 I want a PS5
 
@@ -19,3 +19,5 @@ Thus, the React Native component is unnecessary to run and I have commented out 
 **Known issue:** Sometimes the Axios GET request hangs
 
 I got a PS5 within a week so I won't be updating this anymore :)
+
+This should work with other websites by changing the url and element/text to match
