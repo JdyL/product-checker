@@ -7,7 +7,7 @@ I want a PS5
 There are two components here, one is React Native and other is NodeJs Web scraper.
 
 I initially wanted to implement a React Native Expo app with push notifications but push notifications takes too long to get a buzz on the phone while the phone is locked.
-Thus, the React Native component is unnecessary to run and I have commented out the push notification feature in the `nodejs` folder
+Thus, the React Native component is unnecessary to run and I have commented out the push notification feature in the `nodejs` folder. If want to run React Native folder, an environment file is required with `PUSH_TOKEN` and `ACCESS_TOKEN`.
 
 ## How to run
 
