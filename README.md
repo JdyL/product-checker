@@ -1,4 +1,4 @@
-# product-checker (PS5)
+# Product Checker (PS5)
 
 I want a PS5
 
